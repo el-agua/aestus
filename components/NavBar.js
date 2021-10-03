@@ -21,7 +21,7 @@ function NavBar(props) {
           <Link href="/">Aestus</Link>
         </NavBarBrand>
       </div>
-      <div className="flex items-center mr-20"><Link href="/"><div className="text-white m-5">Humidity</div></Link><Link href="/pressure"><div className="text-white m-5">Pressure</div></Link><Link href="/precipitation"><div className="text-white m-5">Precipitation</div></Link></div>
+      <div className="flex items-center mr-20"><Link href="/"><div className="text-white m-5">Humidity</div></Link><Link href="/pressure"><div className="text-white m-5">Pressure</div></Link><Link href="/precipitation"><div className="text-white m-5">Precipitation</div></Link><Link href="/"><div className="text-white m-5">Humidity</div></Link><Link href="/pressure"><div className="text-white m-5">Pressure</div></Link><Link href="/temperature"><div className="text-white m-5">Temperature</div></Link></div>
     </nav>
   );
 }
