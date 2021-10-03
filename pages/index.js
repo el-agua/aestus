@@ -1,6 +1,7 @@
 import Head from "next/head";
 import DeckGL from "@deck.gl/react";
 import { LineLayer, ScatterplotLayer} from "@deck.gl/layers";
+import {HeatmapLayer} from '@deck.gl/aggregation-layers';
 import {HexagonLayer} from '@deck.gl/aggregation-layers';
 import { StaticMap } from "react-map-gl";
 const MALE_COLOR = [0, 128, 255];
@@ -42,8 +43,8 @@ function Map({
   mapStyle = 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json'
 }) {
   
-  const layers = [new HexagonLayer({
-    id: 'heatmap',
+  const layers = [new HeatmapLayer({
+    id: 'heatmapLayer',
     colorRange: [
       [1, 152, 189],
       [73, 227, 206],
@@ -52,16 +53,13 @@ function Map({
       [254, 173, 84],
       [209, 55, 78]
     ],
-    coverage: 1,
+    
     data,
-    elevationRange: [0, 10000],
-    elevationDomain: [280, 300],
-    getElevationWeight: d => d.TEMPERATURE,
-    extruded: true,
+    radiusPixels:8,
     getPosition: d => [d.LATLON[1],d.LATLON[0]],
-    pickable: true,
-    radius: 10000,
-    upperPercentile: 100,
+    getWeight: d => d.PRESSURE,
+    threshold:.1,
+    aggregation: 'SUM'
   })];
   return (
     <DeckGL
