@@ -6,13 +6,18 @@ function Select(props) {
   const [val, setVal] = React.useState();
   const choices = [
     {
-      choice: "Male",
-      value: "Male",
+      choice: "Pressure",
+      value: "Pressure",
       color: "blue-600",
     },
     {
-      choice: "Female",
-      value: "Female",
+      choice: "Precipitation",
+      value: "Precipitation",
+      color: "red-300",
+    },
+    {
+      choice: "Humidity",
+      value: "Humidity",
       color: "red-300",
     },
   ];

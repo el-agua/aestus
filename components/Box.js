@@ -21,7 +21,7 @@ const Card = (props) => {
       ) : (
         <div></div>
       )}
-      <div id="body">{props.children}</div>
+      <div className="text-blue-300" id="body">{props.children}</div>
     </div>
   );
 };

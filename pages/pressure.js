@@ -17,7 +17,7 @@ var json = require("../Proc-data.json");
 const INITIAL_VIEW_STATE = {
   longitude: 10,
   latitude: 24,
-  zoom: 2,
+  zoom: 1.75,
   pitch: 30,
   bearing: 0,
 };
@@ -33,14 +33,14 @@ const data = [
 
 
 
-export default function Home() {
+export default function Pressure() {
   return (
     <div>
-      <NavBar/>
-    <div style={{position: "relative", height: "91vh"}}>
-      <Map />
-    </div>
-    </div>
+    <NavBar/>
+  <div style={{position: "relative", height: "91vh"}}>
+    <Map />
+  </div>
+  </div>
   );
 }
 function Map({
@@ -50,12 +50,12 @@ function Map({
 }) {
   const [property, setProperty] = useState("Humidity")
   const colors = [
-    [1, 152, 189, "Low Humidity"],
+    [1, 152, 189, "Low Pressure"],
     [73, 227, 206],
     [216, 254, 181],
     [254, 237, 177],
     [254, 173, 84],
-    [209, 55, 78, "High Humidity"]
+    [209, 55, 78, "High Pressure"]
   ]
   var layers = [new HeatmapLayer({
     id: 'heatmapLayer',
@@ -71,7 +71,7 @@ function Map({
     data,
     radiusPixels:8,
     getPosition: d => [d.LATLON[1],d.LATLON[0]],
-    getWeight: d => d.HUMIDITY,
+    getWeight: d => d.PRESSURE,
     threshold:.1,
     aggregation: 'SUM'
   })]
